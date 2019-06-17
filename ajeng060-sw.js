@@ -1,4 +1,4 @@
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "ajeng-firstpwa-v1";
 var urlsToCache = [
   "/",
   "/nav.html",
@@ -22,6 +22,7 @@ self.addEventListener("install", function(event) {
       return cache.addAll(urlsToCache);
     })
   );
+  self.skipWaiting();
 });
 
 self.addEventListener("fetch", function(event) {

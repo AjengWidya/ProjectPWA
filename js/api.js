@@ -39,8 +39,8 @@ function getArticles() {
                       </div>
                     </a>
                     <div class="card-content">
-                      <span class="card-title truncate">${article.title}</span>
-                      <p>${article.description}</p>
+                      <span class="card-title truncate">${article.name}</span>
+                      <p>${article.email}</p>
                     </div>
                   </div>
                 `;
@@ -69,8 +69,8 @@ function getArticles() {
                   </div>
                 </a>
                 <div class="card-content">
-                  <span class="card-title truncate">${article.title}</span>
-                  <p>${article.description}</p>
+                  <span class="card-title truncate">${article.name}</span>
+                  <p>${article.email}</p>
                 </div>
               </div>
             `;
