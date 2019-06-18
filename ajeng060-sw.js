@@ -1,21 +1,22 @@
-const CACHE_NAME = "ajeng-firstpwa-v1";
+var CACHE_NAME = "ajeng-firstpwa-v1";
 var urlsToCache = [
   "/",
-  "/nav.html",
-  "/index.html",
-  "/article.html",
-  "/pages/home.html",
-  "/pages/about.html",
-  "/pages/contact.html",
-  "/css/materialize.min.css",
-  "/js/materialize.min.js",
-  "/manifest.json",
-  "/js/nav.js",
-  "/js/api.js",
-  "/icon.png"
+  "nav.html",
+  "index.html",
+  "article.html",
+  "pages/home.html",
+  "pages/about.html",
+  "pages/contact.html",
+  "css/materialize.min.css",
+  "js/materialize.min.js",
+  "manifest.json",
+  "js/nav.js",
+  "js/api.js",
+  "icon.png"
 ];
 
 self.addEventListener("install", function(event) {
+  console.log('Service  worker  installing...');
   event.waitUntil(
     caches.open(CACHE_NAME)
     .then(function(cache) {
@@ -24,6 +25,7 @@ self.addEventListener("install", function(event) {
   );
   self.skipWaiting();
 });
+
 
 self.addEventListener("fetch", function(event) {
   var base_url = "http://jsonplaceholder.typicode.com/";
@@ -40,13 +42,14 @@ self.addEventListener("fetch", function(event) {
   } else {
     event.respondWith(
       caches.match(event.request, { ignoreSearch: true }).then(function(response) {
-        return response || fetch (event.request);
+        return response || fetch(event.request);
       })
     )
   }
 });
 
 self.addEventListener("activate", function(event) {
+  console.log('Service  worker  activating...');
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
