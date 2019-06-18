@@ -30,17 +30,18 @@ function getArticles() {
       if (response) {
         response.json().then(function(data) {
           var articlesHTML = "";
-          data.result.forEach(function(article) {
+          data.forEach(function(article) {
             articlesHTML += `
                   <div class="card">
                     <a href="./article.html?id=${article.id}">
                       <div class="card-image waves-effect waves-block waves-light">
-                        <img src="${article.thumbnail}" />
+                        
                       </div>
                     </a>
                     <div class="card-content">
                       <span class="card-title truncate">${article.name}</span>
-                      <p>${article.email}</p>
+                      <p>Username: ${article.username}</p>
+                      <p>Email: ${article.email}</p>
                     </div>
                   </div>
                 `;
@@ -60,17 +61,16 @@ function getArticles() {
 
       // Menyusun komponen card artikel secara dinamis
       var articlesHTML = "";
-      data.result.forEach(function(article) {
+      data.forEach(function(article) {
         articlesHTML += `
               <div class="card">
                 <a href="./article.html?id=${article.id}">
-                  <div class="card-image waves-effect waves-block waves-light">
-                    <img src="${article.thumbnail}" />
-                  </div>
+                  
                 </a>
                 <div class="card-content">
                   <span class="card-title truncate">${article.name}</span>
-                  <p>${article.email}</p>
+                  <p>Username: ${article.username}</p>
+                  <p>Email: ${article.email}</p>
                 </div>
               </div>
             `;
@@ -93,11 +93,11 @@ function getArticleById() {
           var articleHTML = `
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
-                <img src="${data.result.cover}" />
+                
               </div>
               <div class="card-content">
-                <span class="card-title">${data.result.post_title}</span>
-                ${snarkdown(data.result.post_content)}
+                <span class="card-title">${data.post_title}</span>
+                ${snarkdown(data.post_content)}
               </div>
             </div>
           `;
@@ -118,11 +118,11 @@ function getArticleById() {
       var articleHTML = `
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img src="${data.result.cover}" />
+              
             </div>
             <div class="card-content">
-              <span class="card-title">${data.result.post_title}</span>
-              ${snarkdown(data.result.post_content)}
+              <span class="card-title">${data.post_title}</span>
+              ${snarkdown(data.post_content)}
             </div>
           </div>
         `;
