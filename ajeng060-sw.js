@@ -17,12 +17,12 @@ var urlsToCache = [
 
 self.addEventListener("install", function(event) {
   console.log('Service  worker  installing...');
-  event.waitUntil(
+
     caches.open(CACHE_NAME)
     .then(function(cache) {
       return cache.addAll(urlsToCache);
     })
-  );
+
   self.skipWaiting();
 });
 
@@ -42,7 +42,7 @@ self.addEventListener("fetch", function(event) {
   } else {
     event.respondWith(
       caches.match(event.request, { ignoreSearch: true }).then(function(response) {
-        return response || fetch(event.request);
+        return response || fetch (event.request);
       })
     )
   }
